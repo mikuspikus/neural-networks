@@ -28,28 +28,30 @@ features, target = blobs
 
 # within cluster summ of squares
 wcss = []
-start, stop, step = 2, 5, 1
+start, stop, step = 2, 6, 1
 clusters_range = range(start, stop + step, step)
 
-# for n_clusters in clusters_range:
-#     kms = KMeans(
-#         n_clusters=n_clusters,
-#         init='k-means++',
-#         max_iter=300,
-#         n_init=10,
-#         random_state=10
-#     )
+for n_clusters in clusters_range:
+    kms = KMeans(
+        n_clusters=n_clusters,
+        init='k-means++',
+        max_iter=300,
+        n_init=10,
+        random_state=10
+    )
 
-#     kms.fit(features)
-#     wcss.append(kms.inertia_)
+    kms.fit(features)
+    wcss.append(kms.inertia_)
 
-# plt.plot(clusters_range, wcss)
+plt.plot(clusters_range, wcss)
 
-# plt.title('The elbow method')
-# plt.xlabel('number of clusters')
-# plt.ylabel('Within cluster summ of squares')
+plt.title('The elbow method')
+plt.xlabel('number of clusters')
+plt.ylabel('Within cluster summ of squares')
+plt.yticks(wcss)
+plt.xticks(clusters_range)
 
-# plt.show()
+plt.show()
 
 feature_dim = (1, 2)
 
