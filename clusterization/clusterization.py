@@ -14,6 +14,8 @@ from sklearn.metrics import silhouette_samples, silhouette_score
 # features = iris.data
 # target = iris.target
 
+random_state = 100
+
 blobs = datasets.make_blobs(
     n_samples = 500, 
     n_features = 10,
@@ -21,7 +23,7 @@ blobs = datasets.make_blobs(
     cluster_std = 1,
     center_box = (-15.0, 15.0),
     shuffle = True,
-    random_state = 10
+    random_state = random_state
 )
 
 features, target = blobs
@@ -37,7 +39,7 @@ for n_clusters in clusters_range:
         init='k-means++',
         max_iter=300,
         n_init=10,
-        random_state=10
+        random_state=random_state
     )
 
     kms.fit(features)
@@ -59,7 +61,7 @@ for n_clusters in clusters_range:
     fig, (fst_plt, snd_plt) = plt.subplots(1, 2)
     # fst_plt is silhouette plot
     # silhouette coefficient ranges from [-1, 1]
-    fst_plt.set_xlim([0, 1])
+    fst_plt.set_xlim([-1, 1])
     # (n_clusters + 1) * 10] for spaces
     fst_plt.set_ylim([0, len(features) + (n_clusters + 1) * 10])
     kms = KMeans(n_clusters = n_clusters, random_state = 10)
