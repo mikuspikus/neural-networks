@@ -9,11 +9,6 @@ import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_samples, silhouette_score
 
-# iris = datasets.load_iris()
-
-# features = iris.data
-# target = iris.target
-
 random_state = 100
 
 blobs = datasets.make_blobs(
@@ -27,6 +22,11 @@ blobs = datasets.make_blobs(
 )
 
 features, target = blobs
+
+# iris = datasets.load_iris()
+
+# features = iris.data
+# target = iris.target
 
 # within cluster summ of squares
 wcss = []
